@@ -35,12 +35,19 @@ namespace blackJack {
 				}
 			}
 
+			this.shuffle ();
+		}
+
+		public void shuffle() {
 			var shuffledDeck = deckOfCards.OrderBy (a => Guid.NewGuid ());
 			deckOfCards = shuffledDeck.ToList();
 		}
 
 		public string drawCard () {
-			return deckOfCards.;
+			var first = deckOfCards.First();
+			deckOfCards.RemoveAt (0);
+			this.shuffle ();
+			return first;
 		}
 	}
 }
