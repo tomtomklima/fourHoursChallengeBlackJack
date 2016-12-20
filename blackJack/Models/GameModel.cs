@@ -14,5 +14,9 @@ namespace blackJack {
 			int savedMoney = 888;
 			return savedMoney;
 		}
+
+		public void SaveMoney(int money) {
+			//TODO save money
+		}
 	}
 }

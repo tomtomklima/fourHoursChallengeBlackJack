@@ -33,7 +33,7 @@ namespace blackJack {
 				}
 			default: {
 				throw new Exception ("Unknown userChoice");
-			}
+				}
 			}
 
 
@@ -57,31 +57,39 @@ namespace blackJack {
 			}
 
 			int finalMoney = this.GameRoundController (money);
-			//safe finalMoney;
+			Game.SaveMoney(finalMoney);
 
 			//end of GameController
 		}
 
 		public int GameRoundController(int humanStartingMoney){
+			var GameRound = new GameRoundModel ();
 			var Deck = new Deck ();
 			var humanPlayer = new Player();
-			var bankPlayer = new BankPlayer ();
+			var bankPlayer = new BankPlayer();
 
 			//first the human
 			humanPlayer.addCard(Deck.drawCard());
-			humanPlayer.addCard(Deck.drawCard());
 
-			//ask player if he wanna card
 			int playerReaction;
 			do {
+				humanPlayer.addCard(Deck.drawCard()); //draw scond card for in first loop
 				var humanHand = humanPlayer.getHand();
-				List<int> humanScore = humanPlayer.getScore();
-				//0 for stay, 1 for next card
+				int humanScore = humanPlayer.getScore();
+
+				//ask player; 0 for stay, 1 for next card
 				playerReaction = View.RenderHumanTurn(humanHand, humanScore, humanStartingMoney);
 			} while (playerReaction == 1);
 
 			//second the bank
+			//TODO add "get minimal value from list, not first"
+			while (bankPlayer.playAgaintsHuman(humanPlayer.getScore()) == "getCard") { //else "holdOn"
+				bankPlayer.addCard(Deck.drawCard());
+			}
 
+			int finalMoney = GameRound.getAdjustedMoney (humanStartingMoney, humanPlayer.getScore(), bankPlayer.getScore());
+
+			View.RenderBankTurn (humanPlayer.getHand (), humanPlayer.getScore (), bankPlayer.getHand (), bankPlayer.getScore(), finalMoney);
 
 			return finalMoney;
 		}

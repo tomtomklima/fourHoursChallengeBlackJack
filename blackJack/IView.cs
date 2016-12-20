@@ -16,11 +16,12 @@ namespace blackJack {
 			return 0;
 		}
 
-		public int RenderHumanTurn(List<string> HumanHand, List<int> HumanScore, int HumanMoney) {
-			
+		public int RenderHumanTurn(List<string> HumanHand, int HumanScore, int HumanMoney) {
+			//dummy
+			return 0;
 		}
 
-		public int RenderBankTurn(List<string> HumanHand, List<int> HumanScore, List<string> BankHand, List<int> BankScore, int HumanMoney) {
+		public void RenderBankTurn(List<string> HumanHand, int HumanScore, List<string> BankHand, int BankScore, int HumanMoney) {
 		
 		}
 	}
