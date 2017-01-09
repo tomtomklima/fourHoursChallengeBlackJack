@@ -13,7 +13,7 @@ namespace blackJack {
 		public GameRound () {
 			deck = new Deck();
 			humanPlayer = new Player (deck);
-			bankPlayer = new BankPlayer(deck);
+			bankPlayer = new BankPlayer (deck);
 		}
 
 		/*
@@ -75,7 +75,7 @@ namespace blackJack {
 				throw new Exception("Jeden z hráčů má nulové skóre a tedy nejspíš ještě nehrál");
 			}
 
-			if (humanScore > bankScore) {
+			if ((humanScore > bankScore) && (humanScore <= 21)) {
 				return "human";
 			} else {
 				return "bank";

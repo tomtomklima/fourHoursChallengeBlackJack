@@ -28,11 +28,12 @@ namespace blackJack {
 		};
 
 		public Deck() {
-			deckOfCards = makeNewDeck ();
+			deckOfCards = new List<string> ();
+			this.makeNewDeck ();
 		}
 
 		public void makeNewDeck() {
-			deckOfCards = null;
+			deckOfCards.Clear();
 			foreach (string suit in suits) {
 				foreach (string value in values) {
 					deckOfCards.Add (suit + value);

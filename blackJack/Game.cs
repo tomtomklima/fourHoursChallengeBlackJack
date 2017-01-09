@@ -6,7 +6,7 @@ namespace blackJack {
 		private const int oneTurnMoney =  50;
 		private const int startingMoney = 200;
 		private const string scoreFile = "score.txt";
-		private GameRound gameRound;
+		public GameRound gameRound;
 		public Game () {
 			gameRound = new GameRound ();
 		}
@@ -16,9 +16,9 @@ namespace blackJack {
 		 */
 		public bool isHumanScoreLoadable() {
 			try {
-				int score = File.ReadAllText (scoreFile);
+				int score = Int32.Parse( File.ReadAllText (scoreFile));
 				return true;
-			} catch (Exception e) {
+			} catch {
 				return false;
 			}
 		}
@@ -30,7 +30,7 @@ namespace blackJack {
 		 */
 		public int loadScoreFromFile() {
 			try {
-				int score = File.ReadAllText (scoreFile);
+				int score = Int32.Parse(File.ReadAllText (scoreFile));
 				return score;
 			} catch (Exception e) {
 				throw new Exception ("V souboru " + scoreFile + " není číslo, soubor není dostupný nebo vůbec neexistuje. Zpráva: " + e.Message);
@@ -40,10 +40,10 @@ namespace blackJack {
 		/*
 		 * create new save file (and maybe delete the old one)
 		 */
-		public void createNewSave(string startingMoney = startingMoney) {
+		public void createNewSave() {
 			try {
 				File.Delete(scoreFile);
-				File.WriteAllText (scoreFile, startingMoney);
+				File.WriteAllText (scoreFile, startingMoney.ToString());
 			} catch (Exception e) {
 				throw new Exception ("Soubor " + scoreFile + " není přístupný protože: " + e.Message);
 			}
@@ -74,7 +74,7 @@ namespace blackJack {
 			try {
 				int oldScore = loadScoreFromFile ();
 				int newScore = oldScore + difference;
-				File.WriteAllText (newScore.ToString ());
+				File.WriteAllText (scoreFile, newScore.ToString ());
 			} catch (Exception e) {
 				throw new Exception ("Nepovedlo se uložit nové skóre protože: " + e.Message);
 			}
