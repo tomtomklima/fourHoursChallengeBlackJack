@@ -1,24 +1,14 @@
 ﻿<Properties StartupItem="blackJack/blackJack.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="blackJack/Controllers.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="blackJack/IView.cs">
     <Files>
-      <File FileName="blackJack/IView.cs" Line="23" Column="107" />
-      <File FileName="blackJack/Controllers.cs" Line="84" Column="4" />
-      <File FileName="blackJack/Models/GameModel.cs" Line="5" Column="11" />
-      <File FileName="blackJack/Models/IDeck.cs" Line="13" Column="14" />
+      <File FileName="blackJack/Models/Deck.cs" Line="50" Column="17" />
+      <File FileName="blackJack/Controllers.cs" Line="13" Column="4" />
+      <File FileName="blackJack/Models/GameRoundModel.cs" Line="6" Column="54" />
+      <File FileName="blackJack/Models/Player.cs" Line="36" Column="39" />
+      <File FileName="blackJack/Models/BankPlayer.cs" Line="6" Column="33" />
+      <File FileName="blackJack/IView.cs" Line="17" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="blackJack" expanded="True">
-            <Node name="blackJack" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Controllers.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

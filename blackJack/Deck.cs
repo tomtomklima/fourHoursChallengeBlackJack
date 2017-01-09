@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-//TODO
 namespace blackJack {
 	public class Deck {
 		private List<string> deckOfCards;
@@ -28,7 +27,12 @@ namespace blackJack {
 			"A",
 		};
 
+		public Deck() {
+			deckOfCards = makeNewDeck ();
+		}
+
 		public void makeNewDeck() {
+			deckOfCards = null;
 			foreach (string suit in suits) {
 				foreach (string value in values) {
 					deckOfCards.Add (suit + value);

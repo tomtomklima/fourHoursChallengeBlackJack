@@ -4,9 +4,14 @@ using System.Collections.Generic;
 namespace blackJack {
 	public class Player {
 		private List <string> hand = null;
+		private Deck deck;
 
-		public void addCard(string Card) {
-			hand.Add (Card);
+		public Player(Deck deck) {
+			this.deck = deck;
+		}
+
+		public void getCard() {
+			hand.Add (deck.drawCard());
 		}
 
 		public List<string> getHand() {
@@ -41,5 +46,18 @@ namespace blackJack {
 			return finalScore;
 		}
 	}
-}
 
+	public class BankPlayer:Player {
+		public BankPlayer (Deck deck) : base (deck) {}
+
+		public void playAgaintsHuman(int humanScore) {
+			this.getCard ();
+			this.getCard ();
+
+			//get cards until you have more or same points as human player
+			while (this.getScore() < humanScore) {
+				this.getCard ();
+			}
+		}
+	}
+}
